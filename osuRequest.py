@@ -154,12 +154,16 @@ def getTop100(id):
         
         ppFactor = getPP(i['user_id'])
         comboFactor = math.pow(max_combo/int(i['maxcombo']),0.5)
-        ans+=modFactor*(1+diff/10)*(10+ppFactor/100)*comboFactor/2500
+        accFactor = 1/math.pow( float(getACC(i))/100, 1.6)
+        ans+=modFactor*(1+diff/10)*(10+ppFactor/100)*comboFactor/2500*accFactor
         
     ans = math.pow(ans,0.8)*2.1
     diffs.insert_one({'song':map['title'],'blind':ans,'diff':diff,'id':id})
     print(ans)
-    
-getTop100('53554')
+  
+#def getBlind(combo,    
+while(1):
+    beatmapid = input()
+    getTop100(beatmapid)
 #print(getPP('rafis'))
 #print( getRecentBP('luffyty') ) for debug
