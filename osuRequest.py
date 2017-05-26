@@ -137,6 +137,7 @@ def getTop100(id):
     rankData = json.loads(r.text)
     map = json.loads(getMAP(id)).pop()
     diff = float(map['difficultyrating'])
+    if(diff<4 or int(map['passcount'])<4500): return 'Too easy or not enough playcount'
     max_combo = int(map['max_combo'])
     ans=0
     for i in rankData:
